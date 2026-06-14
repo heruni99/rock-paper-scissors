@@ -9,6 +9,15 @@ function getComputerChoice() {
     }
 }
 
+function getHumanChoice() {
+    const humanChoice = prompt("rock, paper, or scissor?");
+    if (humanChoice === "rock" || humanChoice === "paper" || humanChoice === "scissor") {
+        return humanChoice;
+    } else {
+        alert("Invalid choice. Please choose rock, paper, or scissor.");
+        return getHumanChoice();
+    }
+}
+
 console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
+console.log(getHumanChoice());
