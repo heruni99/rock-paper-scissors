@@ -1,46 +1,85 @@
 function getComputerChoice() {
-    const randomNumber = Math.floor(Math.random() * 3);
-    if (randomNumber === 0) {
-        return "rock";
-     } else if (randomNumber === 1) {
-        return "paper";
-     } else {
-        return "scissor";   
-    }
+  const randomNumber = Math.floor(Math.random() * 3);
+  if (randomNumber === 0) {
+    return "rock";
+  } else if (randomNumber === 1) {
+    return "paper";
+  } else {
+    return "scissor";
+  }
 }
 
 function getHumanChoice() {
-    const humanChoice = prompt("rock, paper, or scissor?");
-    if (humanChoice === "rock" || humanChoice === "paper" || humanChoice === "scissor") {
-        return humanChoice;
-    } else {
-        alert("Invalid choice. Please choose rock, paper, or scissor.");
-        return getHumanChoice();
-    }
+  const humanChoice = prompt("rock, paper, or scissor?");
+  if (
+    humanChoice === "rock" ||
+    humanChoice === "paper" ||
+    humanChoice === "scissor"
+  ) {
+    return humanChoice;
+  } else {
+    alert("Invalid choice. Please choose rock, paper, or scissor.");
+    return getHumanChoice();
+  }
 }
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+function playGame() {
+  let computerScore = 0;
+  let humanScore = 0;
 
-let computerScore = 0;
-let humanScore = 0;
-
-function playground( humanChoice, computerChoice) {
+  // Changed name to playRound to match your calls below
+  function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
+
+    // Changed returns to console.logs so the text prints and the code keeps running
     if (humanChoice === computerChoice) {
-        return "It's a tie!";
-    } else if ((humanChoice === "rock" && computerChoice === "scissor") ||
-               (humanChoice === "paper" && computerChoice === "rock") ||
-               (humanChoice === "scissor" && computerChoice === "paper")) {
-        humanScore++;
-        return "You win!";
+      console.log("It's a tie!");
+    } else if (
+      (humanChoice === "rock" && computerChoice === "scissor") ||
+      (humanChoice === "paper" && computerChoice === "rock") ||
+      (humanChoice === "scissor" && computerChoice === "paper")
+    ) {
+      humanScore++;
+      console.log("You win this round!");
     } else {
-        computerScore++;
-        return "Computer wins!";
+      computerScore++;
+      console.log("Computer wins this round!");
     }
+
+    // This will now successfully run because the return blocks were removed
+    console.log(
+      `Current Score -> You: ${humanScore} | Computer: ${computerScore}\n`,
+    );
+  }
+
+  // Call playRound 5 times.
+  console.log("--- ROUND 1 ---");
+  playRound(getHumanChoice(), getComputerChoice());
+
+  console.log("--- ROUND 2 ---");
+  playRound(getHumanChoice(), getComputerChoice());
+
+  console.log("--- ROUND 3 ---");
+  playRound(getHumanChoice(), getComputerChoice());
+
+  console.log("--- ROUND 4 ---");
+  playRound(getHumanChoice(), getComputerChoice());
+
+  console.log("--- ROUND 5 ---");
+  playRound(getHumanChoice(), getComputerChoice());
+
+  // --- DECLARE THE FINAL WINNER ---
+  console.log("==============================");
+  console.log(`FINAL SCORE -> You: ${humanScore} | Computer: ${computerScore}`);
+
+  if (humanScore > computerScore) {
+    console.log("🏆 GAME OVER: Congratulations, you won the overall game!");
+  } else if (computerScore > humanScore) {
+    console.log("🤖 GAME OVER: The computer won the overall game!");
+  } else {
+    console.log("🤝 GAME OVER: The entire match is a draw!");
+  }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+// This line actually starts the 5-round game when the script loads
+playGame();
