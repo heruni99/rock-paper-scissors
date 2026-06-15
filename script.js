@@ -11,9 +11,13 @@ function getComputerChoice() {
 
 
 
-function playGame() {
   let computerScore = 0;
   let humanScore = 0;
+
+// 2. Select the HTML elements where we want to display results
+const roundResultDiv = document.getElementById("round-result");
+const runningScoreDiv = document.getElementById("running-score");
+const gameWinnerDiv = document.getElementById("game-winner");
 
   // Changed name to playRound to match your calls below
   function playRound(humanChoice, computerChoice) {
@@ -49,6 +53,6 @@ function playGame() {
   } else {
     console.log("🤝 GAME OVER: The entire match is a draw!");
   }
-}
+
 
 
