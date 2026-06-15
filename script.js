@@ -19,40 +19,49 @@ const roundResultDiv = document.getElementById("round-result");
 const runningScoreDiv = document.getElementById("running-score");
 const gameWinnerDiv = document.getElementById("game-winner");
 
-  // Changed name to playRound to match your calls below
-  function playRound(humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase();
+ // 3. Your playRound function, now sitting at the top level
+function playRound(humanChoice, computerChoice) {
+  // If someone already won, stop playing
+  if (humanScore === 5 || computerScore === 5) return;
 
-    // Changed returns to console.logs so the text prints and the code keeps running
-    if (humanChoice === computerChoice) {
-      console.log("It's a tie!");
-    } else if (
-      (humanChoice === "rock" && computerChoice === "scissor") ||
-      (humanChoice === "paper" && computerChoice === "rock") ||
-      (humanChoice === "scissor" && computerChoice === "paper")
-    ) {
-      humanScore++;
-      console.log("You win this round!");
-    } else {
-      computerScore++;
-      console.log("Computer wins this round!");
-    }
+  humanChoice = humanChoice.toLowerCase();
+  let resultMessage = "";
 
-    // This will now successfully run because the return blocks were removed
-    console.log(
-      `Current Score -> You: ${humanScore} | Computer: ${computerScore}\n`,
-    );
-  }
-
-  
-
-  if (humanScore > computerScore) {
-    console.log("🏆 GAME OVER: Congratulations, you won the overall game!");
-  } else if (computerScore > humanScore) {
-    console.log("🤖 GAME OVER: The computer won the overall game!");
+  if (humanChoice === computerChoice) {
+    resultMessage = `It's a tie! Both chose ${humanChoice}.`;
+  } else if (
+    (humanChoice === "rock" && computerChoice === "scissor") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissor" && computerChoice === "paper")
+  ) {
+    humanScore++;
+    resultMessage = `You win this round! ${humanChoice} beats ${computerChoice}.`;
   } else {
-    console.log("🤝 GAME OVER: The entire match is a draw!");
+    computerScore++;
+    resultMessage = `Computer wins this round! ${computerChoice} beats ${humanChoice}.`;
   }
 
+  // Update the UI text instead of using console.log
+  roundResultDiv.textContent = resultMessage;
+  runningScoreDiv.textContent = `Current Score -> You: ${humanScore} | Computer: ${computerScore}`;
 
+  // Check if the game has an overall winner (First to 5)
+  if (humanScore === 5) {
+    gameWinnerDiv.textContent = "🏆 GAME OVER: Congratulations, you won the overall game!";
+  } else if (computerScore === 5) {
+    gameWinnerDiv.textContent = "🤖 GAME OVER: The computer won the overall game!";
+  }
+}
 
+// 4. ADD EVENT LISTENERS: Connect your HTML buttons directly to the playRound function
+document.getElementById("rock").addEventListener("click", function() {
+  playRound("rock", getComputerChoice());
+});
+
+document.getElementById("paper").addEventListener("click", function() {
+  playRound("paper", getComputerChoice());
+});
+
+document.getElementById("scissor").addEventListener("click", function() {
+  playRound("scissor", getComputerChoice());
+});
