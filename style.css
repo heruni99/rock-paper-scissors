@@ -40,3 +40,23 @@ button {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(255, 65, 65, 0.4);
 }
+
+#paper {
+    border-bottom: 4px solid #00bbf9;
+}
+#paper:hover {
+    background-color: #00bbf9;
+    color: #1a1a2e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 187, 249, 0.4);
+}
+
+#scissor {
+    border-bottom: 4px solid #f9c74f;
+}
+#scissor:hover {
+    background-color: #f9c74f;
+    color: #1a1a2e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(249, 199, 79, 0.4);
+}
