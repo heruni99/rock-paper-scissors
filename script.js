@@ -40,25 +40,7 @@ function playGame() {
     );
   }
 
-  // Call playRound 5 times.
-  console.log("--- ROUND 1 ---");
-  playRound(getHumanChoice(), getComputerChoice());
-
-  console.log("--- ROUND 2 ---");
-  playRound(getHumanChoice(), getComputerChoice());
-
-  console.log("--- ROUND 3 ---");
-  playRound(getHumanChoice(), getComputerChoice());
-
-  console.log("--- ROUND 4 ---");
-  playRound(getHumanChoice(), getComputerChoice());
-
-  console.log("--- ROUND 5 ---");
-  playRound(getHumanChoice(), getComputerChoice());
-
-  // --- DECLARE THE FINAL WINNER ---
-  console.log("==============================");
-  console.log(`FINAL SCORE -> You: ${humanScore} | Computer: ${computerScore}`);
+  
 
   if (humanScore > computerScore) {
     console.log("🏆 GAME OVER: Congratulations, you won the overall game!");
