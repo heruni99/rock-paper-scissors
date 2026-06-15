@@ -51,5 +51,4 @@ function playGame() {
   }
 }
 
-// This line actually starts the 5-round game when the script loads
-playGame();
+
