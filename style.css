@@ -60,3 +60,45 @@ button {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(249, 199, 79, 0.4);
 }
+
+/* Active animation state when clicking */
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Results Display Box */
+#results-container {
+    background-color: #0f3460;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+#round-result {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #e2e2e2;
+    margin-bottom: 1rem;
+}
+
+#running-score {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+}
+
+#game-winner {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    animation: pulse 1.5s infinite alternate;
+}
+
+/* Fun subtle pulse animation for the final winner announcement */
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.03); }
+}
