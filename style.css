@@ -75,6 +75,7 @@ button:active {
     width: 350px;
     text-align: center;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    margin-top: 2rem;
 }
 
 #round-result {
